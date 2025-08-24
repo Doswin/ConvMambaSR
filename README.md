@@ -2,7 +2,7 @@
 
 <div align="center">
   
-[![paper](https://img.shields.io/badge/Remote Sens. 2024, 16(17), 3254;-009B00)](https://doi.org/10.3390/rs16173254)&nbsp;
+[![paper](https://img.shields.io/badge/Remote Sens.2024,16(17),3254;-009B00)](https://doi.org/10.3390/rs16173254)&nbsp;
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=Doswin/ConvMambaSR)
 
 </div>
