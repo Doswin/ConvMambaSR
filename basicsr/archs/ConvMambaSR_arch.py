@@ -740,13 +740,14 @@ class ConvMambaSR(nn.Module):
         self.img_range = img_range
         if in_chans == 3:
             rgb_mean = (0.4488, 0.4371, 0.4040)
+            # Please modify rgb_mean according to your needs.
             # rgb_mean = (0.37768078,0.38752448,0.34691433)
             self.mean = torch.Tensor(rgb_mean).view(1, 3, 1, 1)
         else:
             self.mean = torch.zeros(1, 1, 1, 1)
         self.upscale = upscale
         self.upsampler = upsampler
-        self.mlp_ratio=mlp_ratio
+        self.mlp_ratio = mlp_ratio
         self.RCG_num = RCG_num
         # ------------------------- 1, shallow feature extraction ------------------------- #
         self.conv_first = nn.Conv2d(num_in_ch, embed_dim, 3, 1, 1)
@@ -779,7 +780,7 @@ class ConvMambaSR(nn.Module):
         # stochastic depth
         dpr = [x.item() for x in torch.linspace(0, drop_path_rate, sum(depths))]  # stochastic depth decay rule
 
-        # build Residual State Space Group (RSSG)
+        # build Residual State-Space Group (RSSG)
         self.RSSG_layers = nn.ModuleList()
         for i_layer in range(self.num_layers): # 4-layer
             layer = ResidualGroup(
@@ -806,7 +807,7 @@ class ConvMambaSR(nn.Module):
             conv = nn.Conv2d(embed_dim, embed_dim, 3, 1, 1)
             self.layers_after_RSSG.append(conv)
 
-        # build residual conv group (RCG)
+        # build residual convolution group (RCG)
         self.RCG_Layers = nn.ModuleList()
         for i_layer in range(self.num_layers):
             rconv = make_layer(ResidualBlockNoBN, self.RCG_num, num_feat=embed_dim, res_scale=1)
@@ -819,7 +820,7 @@ class ConvMambaSR(nn.Module):
             conv_after_RCG = nn.Conv2d(embed_dim, embed_dim, 3, 1, 1)
             self.layers_after_RCG.append(conv_after_RCG)
 
-        # global–detail reconstruction module module
+        # global–detail reconstruction module (GDRM)
         self.GDRM_Layers = nn.ModuleList()
         for i_layer in range(self.num_layers):
             fuse = GlobalDetailReconstructionModule(embed_dim)
@@ -911,3 +912,4 @@ class ConvMambaSR(nn.Module):
         x = x / self.img_range + self.mean
 
         return x
+
