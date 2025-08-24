@@ -1,0 +1,96 @@
+# general settings
+name: 00_ConvMambaSR_x4_RSSCN7_bic_base
+model_type: SRModel
+scale: 4
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 10
+
+# dataset and data loader settings
+datasets:
+  train:
+    name: dataset_RSSCN7_bic_x4
+    type: PairedImageDataset
+    dataroot_gt: datasets/dataset_RSSCN7_bic_x4/train/HR.lmdb
+    dataroot_lq: datasets/dataset_RSSCN7_bic_x4/train/LR.lmdb
+    filename_tmpl: '{}'
+    io_backend:
+      type: lmdb
+
+    gt_size: 192
+    use_hflip: true
+    use_rot: true
+
+    # data loader
+    num_worker_per_gpu: 4
+    batch_size_per_gpu: 16
+    dataset_enlarge_ratio: 1
+
+  val:
+    name: dataset_RSSCN7_val
+    type: PairedImageDataset
+    dataroot_gt: datasets/dataset_RSSCN7_bic_x4/val/HR
+    dataroot_lq: datasets/dataset_RSSCN7_bic_x4/val/LR
+    io_backend:
+      type: disk
+
+# network structures
+network_g:
+  type: ConvMambaSR
+  upscale: 4
+  in_chans: 3
+  img_size: 48
+  d_state: 16
+  img_range: 1.
+  depths: [6, 6, 6, 6]
+  embed_dim: 96
+  mlp_ratio: 2
+  RCG_num: 16
+  upsampler: 'pixelshuffle'
+  resi_connection: '1conv'
+
+# path
+path:
+  pretrain_network_g: ~
+  strict_load_g: false
+  resume_state: ~
+
+# training settings
+train:
+  ema_decay: 0.999
+  optim_g:
+    type: Adam
+    lr: !!float 1e-4
+    weight_decay: 0
+    betas: [0.9, 0.99]
+
+  scheduler:
+    type: MultiStepLR
+    milestones: [5600]
+    gamma: 0.1
+
+  total_iter: 14000
+  warmup_iter: -1  # no warm up
+
+  # losses
+  pixel_opt:
+    type: L1Loss
+    loss_weight: 1.0
+    reduction: mean
+
+# validation settings
+val:
+  val_freq: !!float 8e3
+  save_img: false
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 4
+      test_y_channel: false
+      better: higher  # the higher, the better. Default: higher
+
+# logging settings
+logger:
+  print_freq: 500
+  save_checkpoint_freq: !!float 8e3
+  use_tb_logger: false
