@@ -39,6 +39,5 @@ Some of the codes in this repo are borrowed from:
 - [MambaIR](https://github.com/csguoh/MambaIR) 
 - [SimAM](https://github.com/ZjjConan/SimAM)
 - [SegNeXt](https://github.com/Visual-Attention-Network/SegNeXt)
-- [ConvFormerSR](https://github.com/junjieliwhu/ConvFormerSR/)
 
 Thanks to their great work.
