@@ -7,10 +7,6 @@
 
 </div>
 
-## ABSTRACT
-
-Deep learning-based super-resolution (SR) techniques play a crucial role in enhancing the spatial resolution of images. However, remote sensing images present substantial challenges due to their diverse features, complex structures, and significant size variations in ground objects. Moreover, recovering lost details from low-resolution remote sensing images with complex and unknown degradations, such as downsampling, noise, and compression, remains a critical issue. To address these challenges, we propose ConvMambaSR, a novel super-resolution framework that integrates state-space models (SSMs) and Convolutional Neural Networks (CNNs). This framework is specifically designed to handle heterogeneous and complex ground features, as well as unknown degradations in remote sensing imagery. ConvMambaSR leverages SSMs to model global dependencies, activating more pixels in the super-resolution task. Concurrently, it employs CNNs to extract local detail features, enhancing the model’s ability to capture image textures and edges. Furthermore, we have developed a global–detail reconstruction module (GDRM) to integrate diverse levels of global and local information efficiently. We rigorously validated the proposed method on two distinct datasets, RSSCN7 and RSSRD-KQ, and benchmarked its performance against state-of-the-art SR models. Experiments show that our method achieves SOTA PSNR values of 26.06 and 24.29 on these datasets, respectively, and is visually superior, effectively addressing a variety of scenarios and significantly outperforming existing methods.
-
 ## Training and Testing
 
 Please use [BasicSR](https://github.com/XPixelGroup/BasicSR), it is an open-source image super-resolution toolbox based on PyTorch.
@@ -40,5 +36,6 @@ DOI = {10.3390/rs16173254}
 Some of the codes in this repo are borrowed from:  
 - [BasicSR](https://github.com/XPixelGroup/BasicSR)  
 - [MambaIR](https://github.com/csguoh/MambaIR) 
-- [SimAM](https://github.com/ZjjConan/SimAM) 
+- [SimAM](https://github.com/ZjjConan/SimAM)
+
 Thanks to their great work.
