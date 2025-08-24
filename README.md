@@ -38,5 +38,7 @@ Some of the codes in this repo are borrowed from:
 - [BasicSR](https://github.com/XPixelGroup/BasicSR)  
 - [MambaIR](https://github.com/csguoh/MambaIR) 
 - [SimAM](https://github.com/ZjjConan/SimAM)
+- [SegNeXt](https://github.com/Visual-Attention-Network/SegNeXt)
+- [ConvFormerSR](https://github.com/junjieliwhu/ConvFormerSR/)
 
 Thanks to their great work.
