@@ -10,6 +10,7 @@
 ## Training and Testing
 
 Please use [BasicSR](https://github.com/XPixelGroup/BasicSR), it is an open-source image super-resolution toolbox based on PyTorch.
+If you encounter any issues during use, please refer to [MambaIR](https://github.com/csguoh/MambaIR) — it is an excellent work and may provide helpful guidance.
 
 ## Citation 
 
