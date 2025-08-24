@@ -1,8 +1,8 @@
 # ConvMambaSR: Leveraging State-Space Models and CNNs in a Dual-Branch Architecture for Remote Sensing Imagery Super-Resolution
 
 <div align="center">
-  
-[![paper](https://img.shields.io/badge/Remote Sens.2024,16(17),3254;-009B00)](https://doi.org/10.3390/rs16173254)&nbsp;
+
+[![paper](https://img.shields.io/badge/Remote%20Sens.%202024,%2016(17),%203254;-009B00)](https://doi.org/10.3390/rs16173254)&nbsp;
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=Doswin/ConvMambaSR)
 
 </div>
